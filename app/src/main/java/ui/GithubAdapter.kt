@@ -1,19 +1,16 @@
 package ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.githubuser.R
 import com.example.githubuser.databinding.ItemUserBinding
-import data.response.GithubResponse
+import data.response.User
 
-class GithubAdapter (var response: List<GithubResponse>):
+class GithubAdapter(var response: List<User>):
     RecyclerView.Adapter<GithubAdapter.GithubViewHolder>() {
     class GithubViewHolder(val binding: ItemUserBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(githubResponse: GithubResponse){
-            binding.tvName.text = githubResponse.name
+        fun bind(githubResponse: User){
+            binding.tvName.text = githubResponse.login
         }
     }
 

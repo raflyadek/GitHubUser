@@ -52,6 +52,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.activity:activity-ktx:1.3.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
