@@ -1,15 +1,12 @@
 package ui
 
-import android.content.ContentValues
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.githubuser.databinding.ActivityDetailBinding
+import com.google.android.material.tabs.TabLayoutMediator
 import data.response.GithubDetail
-import data.response.GithubResponse
-import data.response.User
 import data.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,9 +25,20 @@ class DetailActivity : AppCompatActivity() {
 
         val username = intent.getStringExtra(EXTRA_DETAIL) ?: ""
         Log.d("DetailActivity", "OnCreate: DATA USERNAME: $username")
-//        val nama = intent.getStringExtra(EXTA_NAMA)
-//        val follower = intent.getStringExtra(EXTRA_FOLLOWER)
-//        val following = intent.getStringExtra(EXTRA_FOLLOWING)
+        getDetailUser(username)
+        initView(username)
+        getDetailUser(username = username)
+    }
+
+    private fun initView(username: String){
+        val followPagerAdapter = FollowPagerAdapter(this, username)
+        binding.viewPager.adapter = followPagerAdapter
+
+        val tabsTittle = arrayListOf("Followers", "Following")
+        TabLayoutMediator(binding.tabs, binding.viewPager){ tab, position ->
+            tab.text = tabsTittle[position]
+        }.attach()
+
     }
 
     private fun getDetailUser(username: String) {
@@ -44,6 +52,7 @@ class DetailActivity : AppCompatActivity() {
                     val responseBody = response.body()
                     if (responseBody != null) {
 //                        showDetailUser(username)
+                        showDetailUser(responseBody)
                     }
                 } else {
                     Log.e("DetailActivity", "onFailure: ${response.message()}")
@@ -56,6 +65,11 @@ class DetailActivity : AppCompatActivity() {
         })
     }
 
-//    private fun showDetailUser (username: String) {
-//        binding.tvUsername.text = username
+    private fun showDetailUser (data: GithubDetail){
+        Glide.with(binding.root)
+            .load(data.avatarUrl)
+            .into(binding.imgProfile)
+        binding.tvUsername.text = data.login
+        binding.tvNamee.text = data.login
+    }
 }

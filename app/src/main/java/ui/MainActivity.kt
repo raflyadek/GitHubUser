@@ -36,17 +36,23 @@ class MainActivity : AppCompatActivity() {
             searchView.setupWithSearchBar(searchBar)
             searchView
                 .editText
-//                .setOnEditorActionListener { textView, actionId, event ->
-//                    searchBar.text = searchView.
-//                }
+                .setOnEditorActionListener { textView, actionId, event ->
+                    searchBar.text = searchView.text
+                    searchView.hide()
+
+                    val searchUser = searchView.text.toString()
+                    if (searchUser.isNotEmpty()){
+                        findUser(searchUser)
+                    }
+                    false
+               }
         }
 
-        findUser()
     }
     
-    private fun findUser(){
+    private fun findUser(username: String){
         showLoading(true)
-        val client = ApiConfig.getApiService().getListUsers("rafly")
+        val client = ApiConfig.getApiService().getListUsers(username)
         client.enqueue(object : Callback<GithubResponse> {
             override fun onResponse(
                 call: Call<GithubResponse>,
