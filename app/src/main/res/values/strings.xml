@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">GithubUser</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="searchbar_hint">Mau nyari siapa?</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

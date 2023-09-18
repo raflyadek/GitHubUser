@@ -1,6 +1,7 @@
 package ui
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuser.databinding.ActivityMainBinding
+import data.response.GithubDetail
 import data.response.GithubResponse
 import data.response.User
 import data.retrofit.ApiConfig
@@ -29,6 +31,15 @@ class MainActivity : AppCompatActivity() {
         binding.rvUser.layoutManager = layoutManager
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvUser.addItemDecoration(itemDecoration)
+
+        with(binding){
+            searchView.setupWithSearchBar(searchBar)
+            searchView
+                .editText
+//                .setOnEditorActionListener { textView, actionId, event ->
+//                    searchBar.text = searchView.
+//                }
+        }
 
         findUser()
     }
@@ -63,6 +74,13 @@ class MainActivity : AppCompatActivity() {
             binding.rvUser.layoutManager = layoutManager
             val adapter = GithubAdapter(listUser)
             binding.rvUser.adapter = adapter
+            adapter.setOnItemClickCallback(object : GithubAdapter.OnItemClickCallback{
+                override fun onItemClicked(data: User) {
+                    val intentToDetail = Intent(this@MainActivity, DetailActivity::class.java)
+                    intentToDetail.putExtra(DetailActivity.EXTRA_DETAIL, data.login)
+                    startActivity(intentToDetail)
+                }
+            })
         }
     }
     private fun showLoading(isLoading: Boolean) {
