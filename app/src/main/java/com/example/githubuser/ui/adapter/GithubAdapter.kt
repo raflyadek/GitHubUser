@@ -1,11 +1,11 @@
-package ui
+package com.example.githubuser.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githubuser.databinding.ItemUserBinding
-import data.response.User
+import com.example.githubuser.data.response.User
 
 class GithubAdapter(var response: List<User>):
     RecyclerView.Adapter<GithubAdapter.GithubViewHolder>() {
@@ -20,7 +20,7 @@ class GithubAdapter(var response: List<User>):
         this.onItemClickCallback = onItemClickCallback
     }
 
-    class GithubViewHolder(val binding: ItemUserBinding): RecyclerView.ViewHolder(binding.root) {
+    class GithubViewHolder(private val binding: ItemUserBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(githubResponse: User) {
             with(binding) {
                 binding.tvName.text = githubResponse.login

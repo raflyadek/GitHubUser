@@ -1,10 +1,9 @@
 
-package data.retrofit
-import data.response.Follow
-import data.response.GithubDetail
-import data.response.GithubResponse
+package com.example.githubuser.data.retrofit
+import com.example.githubuser.data.response.Follow
+import com.example.githubuser.data.response.GithubDetail
+import com.example.githubuser.data.response.GithubResponse
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.http.*
 
 interface ApiService {

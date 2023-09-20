@@ -1,10 +1,10 @@
-package ui
+package com.example.githubuser.ui.adapter
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import data.response.Follow
+import com.example.githubuser.ui.fragment.FollowFrag
 
 class FollowPagerAdapter(activity: AppCompatActivity, private val username: String) : FragmentStateAdapter(activity) {
 
