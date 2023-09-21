@@ -21,19 +21,19 @@ class FollowFrag : Fragment() {
         val username = arguments?.getString(KEY_USERNAME) ?: ""
         val position = arguments?.getInt(KEY_POSITION)
 
+        observeViewModel()
+
         when (position) {
             0 -> followViewModel.getFollowerList(username)
             1 -> followViewModel.getFollowingList(username)
-
         }
-        observeViewModel()
     }
     private fun observeViewModel (){
         followViewModel = FollowViewModel()
-        followViewModel.userFollow.observe(requireActivity()) {userFollow ->
+        followViewModel.userFollow.observe(viewLifecycleOwner) { userFollow ->
             showFollow(userFollow)
         }
-        followViewModel.loadingState.observe(requireActivity()){loadingState ->
+        followViewModel.loadingState.observe(viewLifecycleOwner){ loadingState ->
             showLoading(loadingState)
         }
     }
