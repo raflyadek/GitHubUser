@@ -37,7 +37,7 @@ class FollowFrag : Fragment() {
             showLoading(loadingState)
         }
     }
-    fun showFollow(followList: List<Follow>?) {
+    private fun showFollow(followList: List<Follow>?) {
         if (followList != null) {
             val layoutManager = LinearLayoutManager(requireContext())
             binding.rvFollow.layoutManager = layoutManager
@@ -49,7 +49,7 @@ class FollowFrag : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         return binding.root
     }
