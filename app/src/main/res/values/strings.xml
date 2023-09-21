@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">GithubUser</string>
-    <string name="searchbar_hint">Mau nyari siapa?</string>
+    <string name="searchbar_hint">Mau nyari siapa?
+    <string name="NULL">NULL</string>
+    <string name="rafly">rafly</string>
+    <string name="angka">123</string>
+
 </resources>

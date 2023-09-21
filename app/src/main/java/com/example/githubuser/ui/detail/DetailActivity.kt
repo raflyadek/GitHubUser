@@ -53,6 +53,8 @@ class DetailActivity : AppCompatActivity() {
             .load(data.avatarUrl)
             .into(binding.imgProfile)
         binding.tvUsername.text = data.login
-        binding.tvNamee.text = data.login
+        binding.tvName.text = data.login
+        binding.tvFollowersCount.text = data.followers.toString()
+        binding.tvFollowingCount.text = data.following.toString()
     }
 }
