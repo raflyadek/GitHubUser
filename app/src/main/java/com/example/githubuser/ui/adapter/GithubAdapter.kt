@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githubuser.databinding.ItemUserBinding
-import com.example.githubuser.data.response.User
+import com.example.githubuser.data.remote.response.User
 
 class GithubAdapter(var response: List<User>):
     RecyclerView.Adapter<GithubAdapter.GithubViewHolder>() {

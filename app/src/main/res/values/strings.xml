@@ -6,5 +6,7 @@
     <string name="angka">123</string>
     <string name="Followers">Followers</string>
     <string name="Following">Following</string>
+    <string name="menu_fav">Menu fav</string>
+    <string name="menu_option">Menu option</string>
 
 </resources>

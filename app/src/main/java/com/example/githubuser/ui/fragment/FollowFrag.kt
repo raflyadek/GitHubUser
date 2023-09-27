@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuser.databinding.FragmentFollowBinding
-import com.example.githubuser.data.response.Follow
-import com.example.githubuser.ui.FollowViewModel
+import com.example.githubuser.data.remote.response.Follow
+import com.example.githubuser.ui.viewmodel.FollowViewModel
 import com.example.githubuser.ui.adapter.FollowAdapter
 
 class FollowFrag : Fragment() {

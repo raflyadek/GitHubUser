@@ -1,20 +1,9 @@
-package com.example.githubuser.data.response
+package com.example.githubuser.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class GithubResponse(
 
-	@field:SerializedName("total_count")
-	val totalCount: Int? = null,
-
-	@field:SerializedName("incomplete_results")
-	val incompleteResults: Boolean? = null,
-
-	@field:SerializedName("items")
-	val items: List<User>? = null
-)
-
-data class User(
+data class Follow(
 
 	@field:SerializedName("gists_url")
 	val gistsUrl: String? = null,
@@ -42,9 +31,6 @@ data class User(
 
 	@field:SerializedName("subscriptions_url")
 	val subscriptionsUrl: String? = null,
-
-	@field:SerializedName("score")
-	val score: Int? = null,
 
 	@field:SerializedName("received_events_url")
 	val receivedEventsUrl: String? = null,

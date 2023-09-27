@@ -1,18 +1,24 @@
-package com.example.githubuser.ui
+package com.example.githubuser.ui.viewmodel
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.githubuser.data.response.GithubDetail
+import com.example.githubuser.data.local.entity.Fav
+import com.example.githubuser.data.remote.response.GithubDetail
+import com.example.githubuser.data.repository.FavRepository
 import com.example.githubuser.data.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailViewModel: ViewModel() {
+class DetailViewModel(): ViewModel() {
+//    private val mFavRepository: FavRepository = FavRepository()
+//    fun getFavUserByUsername(): LiveData<Fav> = mFavRepository.getFavUserByUsername(username)
     private var _userDetail = MutableLiveData<GithubDetail>()
     val userDetail: LiveData<GithubDetail> get() = _userDetail
+
 
     fun getDetailUser(username: String) {
         val client = ApiConfig.getApiService().getDetailUser(username)

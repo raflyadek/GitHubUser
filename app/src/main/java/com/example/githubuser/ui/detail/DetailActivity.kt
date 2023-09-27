@@ -2,13 +2,18 @@ package com.example.githubuser.ui.detail
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.example.githubuser.data.local.entity.Fav
 import com.example.githubuser.databinding.ActivityDetailBinding
 import com.google.android.material.tabs.TabLayoutMediator
-import com.example.githubuser.data.response.GithubDetail
-import com.example.githubuser.ui.DetailViewModel
+import com.example.githubuser.data.remote.response.GithubDetail
+import com.example.githubuser.ui.viewmodel.DetailViewModel
 import com.example.githubuser.ui.adapter.FollowPagerAdapter
+import com.example.githubuser.ui.viewmodel.FavViewModel
+import com.example.githubuser.ui.viewmodel.ViewModelFactory
 
 class DetailActivity : AppCompatActivity() {
     companion object {
@@ -17,6 +22,10 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private lateinit var detailViewModel: DetailViewModel
+
+    val favViewModel: FavViewModel by viewModels {
+        ViewModelFactory(application)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -56,5 +65,9 @@ class DetailActivity : AppCompatActivity() {
         binding.tvName.text = data.login
         binding.tvFollowersCount.text = data.followers.toString()
         binding.tvFollowingCount.text = data.following.toString()
+        binding.fabFav.setOnClickListener{
+            Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show()
+            favViewModel.insert(Fav(data.login!!, data.avatarUrl))
+        }
     }
 }

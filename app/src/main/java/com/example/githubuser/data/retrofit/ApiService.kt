@@ -1,8 +1,8 @@
 
 package com.example.githubuser.data.retrofit
-import com.example.githubuser.data.response.Follow
-import com.example.githubuser.data.response.GithubDetail
-import com.example.githubuser.data.response.GithubResponse
+import com.example.githubuser.data.remote.response.Follow
+import com.example.githubuser.data.remote.response.GithubDetail
+import com.example.githubuser.data.remote.response.GithubResponse
 import retrofit2.Call
 import retrofit2.http.*
 

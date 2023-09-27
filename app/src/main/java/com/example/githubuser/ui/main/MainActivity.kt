@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.githubuser.R
 import com.example.githubuser.databinding.ActivityMainBinding
-import com.example.githubuser.data.response.User
+import com.example.githubuser.data.remote.response.User
 import com.example.githubuser.ui.adapter.GithubAdapter
-import com.example.githubuser.ui.MainViewModel
+import com.example.githubuser.ui.viewmodel.MainViewModel
 import com.example.githubuser.ui.detail.DetailActivity
+import com.example.githubuser.ui.insert.FavActivity.FavActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,6 +59,18 @@ class MainActivity : AppCompatActivity() {
                     }
                     false
                 }
+            searchBar.inflateMenu(R.menu.fav_option)
+            searchBar.setOnMenuItemClickListener { menuItem ->
+                when(menuItem.itemId){
+                    R.id.fav_menu -> {
+                        val intent = Intent(this, FavActivity::class.java)
+                        startActivity(intent)
+                        true
+                    }
+
+                    else -> false
+                }
+           }
         }
     }
 
