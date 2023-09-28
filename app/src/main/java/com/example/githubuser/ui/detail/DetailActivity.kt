@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.example.githubuser.data.local.entity.Fav
+import com.example.githubuser.data.local.entity.FavUser
 import com.example.githubuser.databinding.ActivityDetailBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.example.githubuser.data.remote.response.GithubDetail
@@ -24,7 +24,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var detailViewModel: DetailViewModel
 
     val favViewModel: FavViewModel by viewModels {
-        ViewModelFactory(application)
+        ViewModelFactory.getInstane(application)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,8 +66,8 @@ class DetailActivity : AppCompatActivity() {
         binding.tvFollowersCount.text = data.followers.toString()
         binding.tvFollowingCount.text = data.following.toString()
         binding.fabFav.setOnClickListener{
-            Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show()
-            favViewModel.insert(Fav(data.login!!, data.avatarUrl))
+            Toast.makeText(this, "Favourited", Toast.LENGTH_SHORT).show()
+            favViewModel.insert(FavUser(data.login!!, data.avatarUrl))
         }
     }
 }

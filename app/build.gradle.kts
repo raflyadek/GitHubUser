@@ -58,6 +58,7 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.3.1")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
     implementation("androidx.room:room-ktx:2.5.2")
     ksp("androidx.room:room-compiler:2.5.2")
     testImplementation("junit:junit:4.13.2")

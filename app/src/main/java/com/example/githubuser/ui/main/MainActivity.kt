@@ -12,7 +12,8 @@ import com.example.githubuser.data.remote.response.User
 import com.example.githubuser.ui.adapter.GithubAdapter
 import com.example.githubuser.ui.viewmodel.MainViewModel
 import com.example.githubuser.ui.detail.DetailActivity
-import com.example.githubuser.ui.insert.FavActivity.FavActivity
+import com.example.githubuser.ui.insert.fav.FavActivity
+import com.example.githubuser.ui.theme.DarkModeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,7 +64,12 @@ class MainActivity : AppCompatActivity() {
             searchBar.setOnMenuItemClickListener { menuItem ->
                 when(menuItem.itemId){
                     R.id.fav_menu -> {
-                        val intent = Intent(this, FavActivity::class.java)
+                        val intent = Intent(this@MainActivity, FavActivity::class.java)
+                        startActivity(intent)
+                        true
+                    }
+                    R.id.option_menu -> {
+                        val intent = Intent(this@MainActivity, DarkModeActivity::class.java)
                         startActivity(intent)
                         true
                     }

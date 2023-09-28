@@ -1,7 +1,8 @@
 package com.example.githubuser.data.repository
 
 import android.app.Application
-import com.example.githubuser.data.local.entity.Fav
+import androidx.lifecycle.LiveData
+import com.example.githubuser.data.local.entity.FavUser
 import com.example.githubuser.data.local.room.FavDao
 import com.example.githubuser.data.local.room.FavRoomDatabase
 import java.util.concurrent.ExecutorService
@@ -16,19 +17,21 @@ class FavRepository(application: Application) {
         mFavDao = db.favDao()
     }
 
-    fun insert(fav: Fav){
-        executorService.execute { mFavDao.insert(fav) }
+    fun insert(favUser: FavUser){
+        executorService.execute { mFavDao.insert(favUser) }
     }
 
-    fun delete(fav: Fav){
-        executorService.execute { mFavDao.delete(fav) }
+    fun delete(favUser: FavUser){
+        executorService.execute { mFavDao.delete(favUser) }
     }
 
-    fun update(fav: Fav){
-        executorService.execute { mFavDao.update(fav) }
+    fun update(favUser: FavUser){
+        executorService.execute { mFavDao.update(favUser) }
     }
 
     fun getFavUserByUsername(username: String){
         executorService.execute { mFavDao.getFavUserByUsername(username) }
     }
+
+    fun getFavUsers(): LiveData<List<FavUser>> = mFavDao.getFavUsers()
 }

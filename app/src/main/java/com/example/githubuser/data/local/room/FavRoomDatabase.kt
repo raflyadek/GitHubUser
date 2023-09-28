@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.githubuser.data.local.entity.Fav
+import com.example.githubuser.data.local.entity.FavUser
 
-@Database(entities = [Fav::class], version = 1)
+@Database(entities = [FavUser::class], version = 2)
 abstract class FavRoomDatabase : RoomDatabase() {
     abstract fun favDao(): FavDao
 

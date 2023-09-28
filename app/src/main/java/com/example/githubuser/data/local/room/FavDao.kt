@@ -7,20 +7,23 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.githubuser.data.local.entity.Fav
+import com.example.githubuser.data.local.entity.FavUser
 
 @Dao
 interface FavDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(fav: Fav)
+    fun insert(favUser: FavUser)
 
     @Update
-    fun update(fav: Fav)
+    fun update(favUser: FavUser)
 
     @Delete
-    fun delete(fav: Fav)
+    fun delete(favUser: FavUser)
 
-    @Query("SELECT * FROM Fav WHERE username = :username")
-    fun getFavUserByUsername(username: String): LiveData<Fav>
+    @Query("SELECT * FROM FavUser WHERE username = :username")
+    fun getFavUserByUsername(username: String): LiveData<FavUser>
+
+    @Query("SELECT * FROM FavUser")
+    fun getFavUsers(): LiveData<List<FavUser>>
 
 }

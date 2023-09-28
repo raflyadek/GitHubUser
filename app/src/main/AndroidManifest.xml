@@ -15,7 +15,10 @@
         android:theme="@style/Theme.GithubUser"
         tools:targetApi="31">
         <activity
-            android:name=".ui.insert.FavActivity.FavActivity"
+            android:name=".ui.theme.DarkModeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.insert.fav.FavActivity"
             android:exported="false" />
         <activity android:name=".ui.detail.DetailActivity" />
         <activity
