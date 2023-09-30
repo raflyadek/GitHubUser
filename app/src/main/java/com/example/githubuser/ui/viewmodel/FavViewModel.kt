@@ -24,9 +24,7 @@ class FavViewModel(application: Application): ViewModel() {
         mFavRepository.delete(favUser)
     }
 
-    fun getFavUserByUsername(username: String){
-        mFavRepository.getFavUserByUsername(username)
-    }
+    fun getFavUserByUsername(username: String) = mFavRepository.getFavUserByUsername(username)
 
     fun getFavUsers(): LiveData<List<FavUser>> = mFavRepository.getFavUsers()
 }

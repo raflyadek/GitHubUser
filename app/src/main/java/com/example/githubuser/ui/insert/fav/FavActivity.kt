@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuser.data.local.entity.FavUser
+import com.example.githubuser.data.local.room.FavDao
 import com.example.githubuser.databinding.ActivityFavBinding
 import com.example.githubuser.ui.adapter.FavAdapter
 import com.example.githubuser.ui.detail.DetailActivity
@@ -29,6 +30,7 @@ class FavActivity : AppCompatActivity() {
         favViewModel.loadingState.observe(this){ isloading ->
             showLoading(isloading)
         }
+//        favViewModel.getFavUserByUsername
     }
         private fun showUser(listUser: List<FavUser>?) {
             if (listUser != null) {

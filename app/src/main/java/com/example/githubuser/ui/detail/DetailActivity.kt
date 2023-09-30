@@ -57,6 +57,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+
     private fun showDetailUser (data: GithubDetail){
         Glide.with(binding.root)
             .load(data.avatarUrl)
