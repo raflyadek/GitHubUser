@@ -4,9 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuser.R
+import com.example.githubuser.data.Result
 import com.example.githubuser.databinding.ActivityMainBinding
 import com.example.githubuser.data.remote.response.User
 import com.example.githubuser.ui.adapter.GithubAdapter
@@ -14,34 +17,42 @@ import com.example.githubuser.ui.viewmodel.MainViewModel
 import com.example.githubuser.ui.detail.DetailActivity
 import com.example.githubuser.ui.insert.fav.FavActivity
 import com.example.githubuser.ui.theme.DarkModeActivity
+import com.example.githubuser.ui.viewmodel.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: MainViewModel
+    private lateinit var viewModel: MainViewModel
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         supportActionBar?.hide()
 
+        val factory: ViewModelFactory = ViewModelFactory.getInsntance(this)
+        viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
+
         setupSearchBar()
-
-        observeViewModel()
-
-        mainViewModel.findUser("rafly")
     }
 
 
-    private fun observeViewModel() {
-        mainViewModel = MainViewModel()
-        mainViewModel.userList.observe(this) { userList ->
-            showUser(userList)
-        }
-        mainViewModel.loadingState.observe(this) { isLoading ->
-            showLoading(isLoading)
+    private fun observeViewModel(username: String) {
+        viewModel.getUsers(username).observe(this@MainActivity) { result ->
+            if (result != null) {
+                when (result) {
+                    is Result.Error -> {
+                        showLoading(false)
+                        Toast.makeText(this@MainActivity, result.error, Toast.LENGTH_SHORT).show()
+                    }
+
+                    Result.Loading -> showLoading(true)
+                    is Result.Success -> {
+                        showLoading(false)
+                        showUser(result.data)
+                    }
+                }
+            }
         }
     }
 
@@ -56,18 +67,19 @@ class MainActivity : AppCompatActivity() {
 
                     val searchUser = searchView.text.toString()
                     if (searchUser.isNotEmpty()) {
-                        mainViewModel.findUser(searchUser)
+                        observeViewModel(searchUser)
                     }
                     false
                 }
             searchBar.inflateMenu(R.menu.fav_option)
             searchBar.setOnMenuItemClickListener { menuItem ->
-                when(menuItem.itemId){
+                when (menuItem.itemId) {
                     R.id.fav_menu -> {
                         val intent = Intent(this@MainActivity, FavActivity::class.java)
                         startActivity(intent)
                         true
                     }
+
                     R.id.option_menu -> {
                         val intent = Intent(this@MainActivity, DarkModeActivity::class.java)
                         startActivity(intent)
@@ -76,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 
                     else -> false
                 }
-           }
+            }
         }
     }
 

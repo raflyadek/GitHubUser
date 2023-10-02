@@ -23,7 +23,7 @@ class DarkModeActivity : AppCompatActivity() {
         )
 
         darkModeViewModel.getThemeSettings().observe(this){ isDarkModeActive: Boolean ->
-        if (isDarkModeActive) {
+        if ( isDarkModeActive) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 switchTheme.isChecked = true
             } else {
