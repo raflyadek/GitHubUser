@@ -2,7 +2,7 @@
 
 `MVVM Architecture` is one of the most popular architecture to develop an app. MVVM architectural pattern divides an application into three key components: Model, View, and ViewModel. Model: This is your business logic and data. Here, you process data, perform operations, and interact with data sources. View: This is the User Interface (UI). ViewModel: Acts as a mediator between the model and view.
 
-<img src="app/src/main/res/drawable/home_githubuser.png" width=200 height=300><img src="app/src/main/res/drawable/detail_githubuser.png" width=200 height=300><img src="app/src/main/res/drawable/fav_githubuser.png" width=200 height=300><img src="app/src/main/res/drawable/search_githubuser.png" width=200 height=300><img src="app/src/main/res/drawable/darkmode_githubuser.png" width=200 height=300>
+<img src="app/src/main/res/drawable/home_githubuser.png" width=200 height=300><img src="app/src/main/res/drawable/detail_githubuser.png" width=200 height=300><img src="app/src/main/res/drawable/fav_githubuser.png" width=200 height=300><img src="app/src/main/res/drawable/darkmode_githubuser.png" width=200 height=300>
 
 ## Prerequisites
 Basic `Kotlin`, knowledge of `HTTP` request by Retrofit Library, and `Room` for `CRUD` database
