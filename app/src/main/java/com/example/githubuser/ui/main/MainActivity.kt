@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
         setupSearchBar()
+        observeViewModel("rafly")
     }
 
 

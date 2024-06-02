@@ -19,9 +19,6 @@ import com.example.githubuser.ui.viewmodel.FavViewModel
 import com.example.githubuser.ui.viewmodel.ViewModelFactory
 
 class FavActivity : AppCompatActivity() {
-//    val favViewModel: FavViewModel by viewModels {
-//        ViewModelFactory(application)
-//    }
 
     private val binding by lazy { ActivityFavBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {

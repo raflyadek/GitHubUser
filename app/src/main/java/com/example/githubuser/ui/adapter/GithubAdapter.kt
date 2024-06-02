@@ -31,6 +31,8 @@ class GithubAdapter(var response: List<User>):
         }
     }
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {
         val itemUserBinding = ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return GithubViewHolder(itemUserBinding)

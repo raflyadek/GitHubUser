@@ -23,14 +23,10 @@ import com.example.githubuser.ui.viewmodel.ViewModelFactory
 
 class DetailActivity : AppCompatActivity() {
 
-    companion object {
-        const val EXTRA_DETAIL = "EXTRA_DETAIL"
-    }
-
     private lateinit var viewModel: DetailViewModel
     private var isFavUser: Boolean = false
-
     private lateinit var binding: ActivityDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -43,7 +39,6 @@ class DetailActivity : AppCompatActivity() {
         initView(username)
         observeViewModel(username)
     }
-
 
     private fun initView(username: String){
         val followPagerAdapter = FollowPagerAdapter(this, username)
@@ -126,5 +121,8 @@ class DetailActivity : AppCompatActivity() {
         } else {
             binding.progressBar.visibility = View.GONE
         }
+    }
+    companion object {
+        const val EXTRA_DETAIL = "EXTRA_DETAIL"
     }
 }
